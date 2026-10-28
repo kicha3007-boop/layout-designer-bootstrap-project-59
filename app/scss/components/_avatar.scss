@@ -1,0 +1,13 @@
+// Аватар: фиксированный размер и круглая форма
+.avatar {
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 50%;
+
+  @each $name, $size in $avatar-sizes {
+    &-#{$name} {
+      width: $size;
+      height: $size;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+// Собственные миксины проекта
+
+// Прокрутка без видимого скроллбара (из задания)
+@mixin hide-scrollbar() {
+  & {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: hidden auto;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

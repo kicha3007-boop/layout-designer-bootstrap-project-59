@@ -1,0 +1,13 @@
+extends layouts/_layout
+
+block variables
+  - var page = "chat"
+  - var title = "Hexlet Chat: диалог — kicha3007"
+
+block panes
+  //- Диалог в левой области виден только на мобильных
+  section.tab-pane.h-100#current-chat(role="tabpanel" aria-labelledby="current-chat-tab")
+    +dialog("message-mobile")(class="d-lg-none")
+
+block aside
+  +dialog("message-desktop")

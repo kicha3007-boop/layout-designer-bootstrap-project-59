@@ -1,0 +1,9 @@
+//- Меню: на мобильных — внизу экрана, на десктопе — сверху левой области
+nav.nav.app-nav.bg-primary.align-items-center.py-3.order-last.order-lg-first(role="tablist" aria-label="Разделы чата")
+  a.nav-link.py-0.me-auto.me-lg-0(href="index.html")
+    img.app-nav-logo(src="images/icons/logo.svg" alt="Hexlet Chat" width="16" height="28")
+  if page === "chat"
+    +nav-tab("current-chat", "Диалог", "chat-left-text", false)(class="d-lg-none")
+  +nav-tab("contacts", "Контакты", "people", page === "index")
+  +nav-tab("chats", "Сообщения", "chat", page === "chat")
+  +nav-tab("profile", "Профиль", "person", false)

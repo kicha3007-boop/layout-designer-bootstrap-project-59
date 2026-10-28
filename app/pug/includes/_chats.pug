@@ -1,0 +1,13 @@
+//- Панель «Сообщения»: активные диалоги с последним сообщением
+section.tab-pane.h-100.scroll-area.px-4.pt-5#chats(class=page === "chat" ? "active show" : "" role="tabpanel" aria-labelledby="chats-tab")
+  h2.mb-4 Чаты
+  +search("search-chats", "Поиск по сообщениям")
+  ul.list-unstyled.mb-0
+    each chat in chats
+      li.mb-3
+        a.contact.contact-link.shadow-sm(href="chat.html")
+          +contact-body(chat)
+            .d-flex.justify-content-between
+              p.mb-0.me-2= chat.name
+              span.contact-time= chat.time
+            p.contact-status.contact-message.text-muted.mb-0= chat.message

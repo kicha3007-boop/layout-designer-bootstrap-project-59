@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Установка зависимостей
+        run: npm ci
+
+      - name: "Сборка (Gulp: Pug, SCSS, картинки)"
+        run: npm run build
+
+      - name: Линтеры HTML и SCSS
+        run: npm run lint

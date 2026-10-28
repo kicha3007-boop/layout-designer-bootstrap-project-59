@@ -1,0 +1,52 @@
+// Сообщение в диалоге: облачко собеседника (серое) и пользователя (основной цвет)
+.message {
+  display: flex;
+  align-items: flex-end;
+
+  &-avatar {
+    box-shadow: $box-shadow-sm;
+  }
+
+  &-body {
+    max-width: 100%;
+    padding: $spacer * 1.5;
+    background-color: $light;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-sm;
+
+    @include media-breakpoint-up(lg) {
+      max-width: 67%;
+    }
+  }
+
+  &-text {
+    color: $text-muted;
+    overflow-wrap: anywhere;
+  }
+
+  &-time {
+    margin-top: $spacer * 0.5;
+    padding-top: $spacer * 0.25;
+    font-size: $small-font-size;
+    color: $text-muted;
+    border-top: $border-width solid rgba($black, 0.03);
+    opacity: 0.7;
+  }
+
+  &-own {
+    justify-content: flex-end;
+  }
+
+  &-own &-body {
+    background-color: $primary;
+  }
+
+  &-own &-text {
+    color: $white;
+  }
+
+  &-own &-time {
+    color: $white;
+    border-top-color: rgba($white, 0.5);
+  }
+}

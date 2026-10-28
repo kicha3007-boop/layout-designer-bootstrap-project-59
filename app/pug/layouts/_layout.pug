@@ -1,0 +1,26 @@
+block variables
+include ../includes/_data
+include ../includes/_mixins
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="description" content="Hexlet Chat — мессенджер для студентов Хекслета")
+    title= title
+    link(rel="stylesheet" href="css/app.css")
+  body.bg-gray
+    h1.visually-hidden Hexlet Chat
+    .container-xxl.vh-100.p-0.p-lg-4
+      main.row.g-0.h-100.bg-white.radius-lg.overflow-hidden
+        .col-12.col-lg-4.h-100.d-flex.flex-column
+          include ../includes/_nav
+          .tab-content.flex-grow-1.min-h-0
+            block panes
+            include ../includes/_contacts
+            include ../includes/_chats
+            include ../includes/_profile
+        .col-lg-8.h-100.d-none.d-lg-block.border-lg-start
+          block aside
+    script(src="js/bootstrap.bundle.min.js")

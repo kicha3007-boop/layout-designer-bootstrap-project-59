@@ -1,0 +1,87 @@
+//- Встроенные SVG-иконки (fill="currentColor" — цвет берётся из текста)
+mixin icon(name)
+  span.icon(aria-hidden="true")&attributes(attributes)
+    case name
+      when "people"
+        include ../../images/icons/people.svg
+      when "chat"
+        include ../../images/icons/chat.svg
+      when "person"
+        include ../../images/icons/person.svg
+      when "chat-left-text"
+        include ../../images/icons/chat-left-text.svg
+      when "cursor"
+        include ../../images/icons/cursor.svg
+      when "globe"
+        include ../../images/icons/globe.svg
+      when "telephone"
+        include ../../images/icons/telephone.svg
+      when "envelope"
+        include ../../images/icons/envelope.svg
+
+//- Пункт меню, переключающий панель левой области
+mixin nav-tab(id, label, iconName, active)
+  a.nav-link(
+    class=active ? "active" : ""
+    id=id + "-tab"
+    href="#" + id
+    data-bs-toggle="tab"
+    role="tab"
+    aria-controls=id
+    aria-selected=active ? "true" : "false"
+    aria-label=label
+  )&attributes(attributes)
+    +icon(iconName)(class="icon-lg")
+    span.small.d-none.d-lg-inline.ms-2= label
+
+//- Форма поиска в панелях левой области
+mixin search(id, placeholder)
+  form.mb-5(action="#" role="search")
+    label.visually-hidden(for=id)= placeholder
+    input.form-control.bg-white.border-0.border-bottom.rounded-0.shadow-none.p-4(
+      id=id
+      type="search"
+      name="q"
+      placeholder=placeholder
+    )
+
+//- Карточка контакта: аватар, имя и вторая строка (статус или последнее сообщение)
+mixin contact-body(person)
+  img.avatar.avatar-sm(src=person.avatar alt="Аватар: " + person.name width="50" height="50")
+  .p-4.flex-grow-1.overflow-hidden
+    block
+
+//- Компонент «Диалог»: шапка с собеседником, лента сообщений и форма отправки
+mixin dialog(inputId)
+  section.d-flex.flex-column.h-100&attributes(attributes)
+    header.contact.border-bottom
+      +contact-body(companion)
+        p.mb-0= companion.name
+        p.contact-status.text-muted.mb-0= companion.status
+    .scroll-area.flex-grow-1.min-h-0.px-5.pt-5
+      h2.visually-hidden Сообщения
+      ul.list-unstyled.mb-0
+        each m in dialog
+          li.message.mb-3(class=m.own ? "message-own" : "")
+            img.avatar.avatar-sm.message-avatar.me-3.d-none.d-lg-block(
+              src=m.own ? me.avatar : companion.avatar
+              alt=m.own ? "Аватар: " + me.name : "Аватар: " + companion.name
+              width="50"
+              height="50"
+            )
+            .message-body
+              if !m.own
+                p.mb-1= companion.name
+              p.message-text.mb-0= m.text
+              p.message-time.mb-0= m.time
+    form.chat-form.d-flex.align-items-center.border-top.px-2.mx-lg-5(action="#")
+      label.visually-hidden(for=inputId) Сообщение
+      input.form-control.bg-white.border-0.shadow-none.p-4(
+        id=inputId
+        type="text"
+        name="message"
+        placeholder="Напишите сообщение..."
+        autocomplete="off"
+      )
+      button.btn.btn-primary.btn-send(type="submit" aria-label="Отправить")
+        +icon("cursor")(class="icon-lg")

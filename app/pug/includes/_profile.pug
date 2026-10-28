@@ -1,0 +1,18 @@
+//- Панель «Профиль»: карточка пользователя и его контактные данные
+section.tab-pane.h-100.scroll-area.px-4.pt-5#profile(role="tabpanel" aria-labelledby="profile-tab")
+  h2.mb-4 Профиль
+  +search("search-profile", "Поиск по сообщениям")
+  .card.border-0.py-3.mb-3
+    .card-body.text-center
+      img.avatar.avatar-md(src=me.avatar alt="Аватар: " + me.name width="90" height="90")
+      h3.fs-6.fw-normal.lh-base.my-3= me.name
+      p.text-muted= me.about
+  .card.border-0.py-3
+    .card-body
+      ul.list-group.list-group-flush
+        each item in profileContacts
+          li.list-group-item.d-flex.justify-content-between.align-items-center
+            div
+              p.small.text-muted.mb-0= item.label
+              p.mb-0= item.value
+            +icon(item.icon)(class="text-black-50")

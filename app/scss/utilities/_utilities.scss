@@ -1,0 +1,68 @@
+// Пользовательские утилиты через Bootstrap Utilities API:
+// скругления и границы для всех точек перелома
+$border-value: $border-width solid $border-color;
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "radius": (
+      property: border-radius,
+      class: radius,
+      responsive: true,
+      values: (null: $border-radius),
+    ),
+    "radius-left": (
+      property: border-top-left-radius border-bottom-left-radius,
+      class: radius-left,
+      responsive: true,
+      values: (null: $border-radius),
+    ),
+    "radius-right": (
+      property: border-top-right-radius border-bottom-right-radius,
+      class: radius-right,
+      responsive: true,
+      values: (null: $border-radius),
+    ),
+    "radius-left-top": (
+      property: border-top-left-radius,
+      class: radius-left-top,
+      responsive: true,
+      values: (null: $border-radius),
+    ),
+    "border-responsive": (
+      property: border,
+      class: border,
+      responsive: true,
+      values: (null: $border-value),
+    ),
+    "border-responsive-top": (
+      property: border-top,
+      class: border,
+      responsive: true,
+      values: (top: $border-value),
+    ),
+    "border-responsive-end": (
+      property: border-right,
+      class: border,
+      responsive: true,
+      values: (end: $border-value),
+    ),
+    "border-responsive-bottom": (
+      property: border-bottom,
+      class: border,
+      responsive: true,
+      values: (bottom: $border-value),
+    ),
+    "border-responsive-start": (
+      property: border-left,
+      class: border,
+      responsive: true,
+      values: (start: $border-value),
+    ),
+    "min-h-0": (
+      property: min-height,
+      class: min-h,
+      values: (0: 0),
+    ),
+  )
+);

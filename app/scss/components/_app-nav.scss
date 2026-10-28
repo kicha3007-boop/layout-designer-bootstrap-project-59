@@ -1,0 +1,38 @@
+// Меню приложения: снизу экрана на мобильных, сверху левой области на десктопе
+.app-nav {
+  flex-wrap: nowrap;
+  padding-right: $spacer * 2;
+
+  @include media-breakpoint-up(lg) {
+    padding-right: $spacer * 0.25;
+    padding-left: $spacer * 0.25;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding-right: $spacer * 1.25;
+    padding-left: $spacer * 1.25;
+    color: $white;
+
+    @include media-breakpoint-up(lg) {
+      padding-right: $nav-link-padding-x;
+      padding-left: $nav-link-padding-x;
+    }
+
+    &:hover,
+    &:focus {
+      color: rgba($white, 0.75);
+    }
+  }
+
+  &-logo {
+    display: block;
+    width: auto;
+    height: 1.5rem;
+
+    @include media-breakpoint-up(lg) {
+      height: 1.75rem;
+    }
+  }
+}

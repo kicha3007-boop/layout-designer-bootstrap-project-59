@@ -1,0 +1,36 @@
+// Карточка контакта или диалога: аватар и текстовая область
+.contact {
+  display: flex;
+  align-items: center;
+  padding-left: $spacer;
+  background-color: $white;
+
+  &-link {
+    color: $body-color;
+    text-decoration: none;
+    transition: $transition-base;
+
+    &:hover,
+    &:focus {
+      color: $body-color;
+      background-color: $light;
+    }
+  }
+
+  &-status {
+    font-size: $small-font-size;
+  }
+
+  // Длинное последнее сообщение обрезается многоточием
+  &-message {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &-time {
+    font-size: $small-font-size;
+    color: $text-muted;
+    opacity: 0.7;
+  }
+}

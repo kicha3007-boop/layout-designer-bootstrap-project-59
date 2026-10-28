@@ -1,0 +1,58 @@
+// Переопределение переменных Bootstrap — подключается до исходников фреймворка
+
+// Цветовая схема проекта (из шаблона Figma)
+$white: #fff;
+$black: #000;
+$primary: #4545a5;
+$secondary: #6c757d;
+$gray: #efefef;
+$light: #fbfbfb;
+$dark: #212529;
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "gray": $gray,
+  "light": $light,
+  "dark": $dark,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+);
+
+$body-bg: $white;
+
+// Новая точка перелома xxl и ограничение ширины чата
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1540px,
+);
+
+// Границы, скругления и тени
+$border-color: $gray;
+$border-radius: 1rem;
+$enable-shadows: true;
+
+// Размеры аватаров
+$avatar-sizes: (
+  "sm": 50px,
+  "md": 90px,
+  "lg": 200px,
+);

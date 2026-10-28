@@ -1,0 +1,13 @@
+//- Панель «Контакты»: контакты сгруппированы по первой букве
+section.tab-pane.h-100.scroll-area.px-4.pt-5#contacts(class=page === "index" ? "active show" : "" role="tabpanel" aria-labelledby="contacts-tab")
+  h2.mb-4 Контакты
+  +search("search-contacts", "Поиск по контактам")
+  each list, letter in contacts
+    h3.fs-6.fw-normal.lh-base.text-muted.mt-5.mb-3= letter
+    ul.list-unstyled.mb-0
+      each person in list
+        li.mb-3
+          a.contact.contact-link.shadow-sm(href="chat.html")
+            +contact-body(person)
+              p.mb-0= person.name
+              p.contact-status.text-muted.mb-0= person.status
